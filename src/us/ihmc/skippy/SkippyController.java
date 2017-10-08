@@ -1336,8 +1336,10 @@ public class SkippyController implements RobotController
       @Override
       public void doTransitionIntoAction()
       {
+         System.out.println("LeanState");
          if (direction == SkippyToDo.JUMP_FORWARD)
          {
+            System.out.println("LeanState: direction == SkippyToDo.JUMP_FORWARD");
             hipPlaneControlMode.set(SkippyPlaneControlMode.POSITION);
             qd_hip.set(1.4);
             balanceControl();

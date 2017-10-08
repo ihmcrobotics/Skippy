@@ -67,8 +67,8 @@ public class SkippyRobotV2 extends Robot
 
    private enum SkippyJoint
    {
-      HIP_PITCH, SHOULDER_YAW;
-      public static SkippyJoint[] values = {HIP_PITCH, SHOULDER_YAW};
+      HIP_PITCH, SHOULDER_ROLL;
+      public static SkippyJoint[] values = {HIP_PITCH, SHOULDER_ROLL};
 
    }
 
@@ -110,7 +110,7 @@ public class SkippyRobotV2 extends Robot
                                                                   new Vector3D(0.0, 1.0, 0.0));
       Matrix3D inertiaShoulder = RotationalInertiaCalculator.getRotationalInertiaMatrixOfSolidCylinder(SHOULDER_MASS, SHOULDER_RADIUS, SHOULDER_LENGTH, Axis.X);
       RigidBody shoulder = ScrewTools.addRigidBody("shoulder", idShoulderJoint, inertiaShoulder, SHOULDER_MASS, new Vector3D(0.0, 0.0, 0.0));
-      jointMap.put(SkippyJoint.SHOULDER_YAW, idShoulderJoint);
+      jointMap.put(SkippyJoint.SHOULDER_ROLL, idShoulderJoint);
       bodyMap.put(SkippyBody.SHOULDER, shoulder);
 
       //One end effector at each shoulder extremity
@@ -133,7 +133,7 @@ public class SkippyRobotV2 extends Robot
       PinJoint shoulderJoint = new PinJoint("shoulderJoint", new Vector3D(0.0, 0.0, TORSO_LENGTH / 2.0), this, Axis.Y);
       shoulderJoint.setLink(createArm());
       scsRootJoint.addJoint(shoulderJoint);
-      scsJointMap.put(SkippyJoint.SHOULDER_YAW, shoulderJoint);
+      scsJointMap.put(SkippyJoint.SHOULDER_ROLL, shoulderJoint);
 
       PinJoint hipJoint = new PinJoint("hip", new Vector3D(0.0, 0.0, -TORSO_LENGTH / 2.0), this, Axis.X);
       hipJoint.setLink(createLeg());
@@ -355,7 +355,7 @@ public class SkippyRobotV2 extends Robot
 
    public void setQ_shoulder(double shoulderAngle)
    {
-      scsJointMap.get(SkippyJoint.SHOULDER_YAW).setQ(shoulderAngle);
+      scsJointMap.get(SkippyJoint.SHOULDER_ROLL).setQ(shoulderAngle);
    }
 
 }

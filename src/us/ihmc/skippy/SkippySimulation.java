@@ -16,7 +16,7 @@ public class SkippySimulation
    public static final double DT = 0.0001;
    public static final double controlDT = 0.0001;
    public static final double TIME = 20.0;
-   public static final int recordFrequency = 100;//75;
+   public static final int recordFrequency = 75;
 
    private final SimulationConstructionSet sim;
    private final BlockingSimulationRunner blockingSimulationRunner;
@@ -39,7 +39,7 @@ public class SkippySimulation
       sim.setGroundVisible(true);
       sim.setDT(DT, recordFrequency);
       sim.setMaxBufferSize(64000);
-      sim.setCameraPosition(14.0, 10.0, 10.0);
+      sim.setCameraPosition(10.0, 0.0, 2.0);
 
       boolean showOverheadView = true;
       YoGraphicsListRegistry yoGraphicsListRegistry = new YoGraphicsListRegistry();
@@ -96,7 +96,7 @@ public class SkippySimulation
     */
    public static void main(String[] args) throws SimulationExceededMaximumTimeException
    {
-      SkippySimulation skippySimulation = new SkippySimulation(SkippyControllerMode.ICP_BASED);//STATE_FEEDBACK);//
+      SkippySimulation skippySimulation = new SkippySimulation(SkippyControllerMode.STATE_FEEDBACK);
 //      skippySimulation.run(TIME);
       ThreadTools.sleepForever();
    }
