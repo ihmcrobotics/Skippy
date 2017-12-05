@@ -40,6 +40,9 @@ import us.ihmc.simulationconstructionset.util.ground.FlatGroundProfile;
 
 public class SkippyRobot extends Robot
 {
+   /**
+    * Set this to true if you would like to show the moment of inertia ellipsoids in SCS.
+    */
    private static final boolean SHOW_MOI_ELLIPSOIDS = false;
 
    private static final long serialVersionUID = -7671864179791904256L;
